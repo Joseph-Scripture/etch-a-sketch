@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16x16 Flexbox Grid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+     
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .grid-container {
+            
+            display: flex;
+            flex-wrap: wrap;
+
+            border: 1px solid #d1d5db; 
+            width: 90vw; 
+            max-width: 640px; 
+        }
+        .grid-square {
+           
+            width: calc(100% / 16);
+          
+            aspect-ratio: 1 / 1;
+           
+            box-sizing: border-box;
+
+            
+            border-right: 1px solid #e5e7eb; 
+            border-bottom: 1px solid #e5e7eb; 
+            transition: background-color 0.3s ease;
+        }
+        
+        .grid-square:nth-child(16n) {
+            border-right: none;
+        }
+       
+        .grid-square:nth-last-child(-n+16) {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">Dynamic 16x16 Grid</h1>
+        <p class="text-gray-600 mt-2">This grid was generated with JavaScript and styled with Flexbox.</p>
+    </div>
+
+    <div id="grid-container" class="grid-container bg-white rounded-lg shadow-lg"></div>
+
+    <script src="/etch-a-sketch/scripts/index.js">
+      
+    </script>
+
+</body>
+</html>
