@@ -1,27 +1,49 @@
-// --- DOM Manipulation (No changes needed here) ---
 
-// 1. Select the main container where the grid will be placed.
-const gridContainer = document.getElementById('grid-container');
+document.addEventListener('DOMContentLoaded', function() {
 
-// 2. Define the size of the grid.
-const gridSize = 16;
-const totalSquares = gridSize * gridSize; 
+  
+    const gridContainer = document.querySelector('.container');
+    const button = document.querySelector('button');
 
 
-for (let i = 0; i < totalSquares; i++) {
-    const square = document.createElement('div');
+    // Function to create the grid
+    function createGrid(sideLength) {
+        gridContainer.innerHTML = ''; 
+        const info = document.querySelector('.grid-title');
+        info.textContent = `${sideLength} x ${sideLength} Grid`;
 
+        const totalSquares = sideLength * sideLength;
 
-    square.classList.add('grid-square');
+        for (let i = 0; i < totalSquares; i++) {
+            const newDiv = document.createElement('div');
+          
 
-    square.addEventListener('mouseover', () => {
-        square.style.backgroundColor = '#dbeafe'; 
-    });
+            // Calculate size based on the length of one side
+            const squareSize = 100 / sideLength;
+            newDiv.style.width = `${squareSize}%`;
+            newDiv.style.height = `${squareSize}%`;
 
-    square.addEventListener('mouseout', () => {
-        square.style.backgroundColor = ''; 
-    });
+            
+            newDiv.classList.add('content');
 
+            gridContainer.append(newDiv);
+         
+        }
+      
     
-    gridContainer.appendChild(square);
-}
+
+       
+    }
+
+    createGrid(16);
+
+    button.addEventListener('click', () => {
+        let newValue = prompt('Enter A grid size less than 100');
+        if(newValue<= 0 || newValue >100){
+            alert('Enter a valid number of grids')
+        }{
+            createGrid(newValue);
+        }
+    })
+
+});
